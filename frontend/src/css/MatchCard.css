@@ -1,0 +1,93 @@
+.matchcard{
+    background-color: rgb(16, 16, 57);
+    border-radius: 15px;
+    color: aqua;
+    width: 700px;
+    height: 200px;
+    padding: 25px 30px;
+    transition: transform 0.2s;
+    margin-bottom: 20px;
+}
+.matchcard-top{
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: rgb(178, 173, 173);
+    margin-bottom: 10px;
+}
+
+.score-board{
+    padding: 7px;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+
+.matchcard:hover {
+  transform: translateY(-5px);
+}
+
+/* .team-logo {
+  position: relative;
+  aspect-ratio: 2/3;
+  width: 100%;
+}
+
+.team-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+ */
+
+
+.matchcard:hover {
+  opacity: 1;
+}
+.teams-info{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.team1-info {
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  width: 120px;
+  text-align: center;
+}
+.team2-info {
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  width: 120px;
+}
+
+.teams-info h3 {
+  font-size: 0.9rem;
+  margin: 0;
+}
+.team-logo{
+  width: 3rem;
+}
+
+@media (max-width: 768px) {
+  .matchcard {
+    font-size: 0.9rem;
+    width: 325px;
+  }
+
+  .teams-info {
+    padding: 0.75rem;
+  }
+
+}
