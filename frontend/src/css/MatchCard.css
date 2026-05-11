@@ -1,7 +1,7 @@
 .matchcard{
-    background-color: rgb(16, 16, 57);
+    background-color:#111114;
     border-radius: 15px;
-    color: aqua;
+    color: #ffffff;
     width: 700px;
     height: 200px;
     padding: 25px 30px;
@@ -12,8 +12,16 @@
     display: flex;
     justify-content: space-between;
     font-size: 11px;
-    color: rgb(178, 173, 173);
+    color: rgb(99, 85, 192);
     margin-bottom: 10px;
+}
+
+.status-live{
+  color: red;
+}
+
+.status{
+  color: #ffffff;
 }
 
 .score-board{

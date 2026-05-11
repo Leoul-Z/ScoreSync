@@ -2,6 +2,8 @@ import '../css/MatchCard.css'
 
 function MatchCard({ match }) {
 
+    const isLive = match.fixture.status.long === "Second Half" || match.fixture.status.long === "First Half" || match.fixture.status.long === "Extra Time";
+
     return (
         <div className='matchcard'>
 
@@ -11,7 +13,7 @@ function MatchCard({ match }) {
                     {match.league.name}
                 </span>
 
-                <span className='status'>
+                <span className={isLive ? "status-live" : "status"}>
                     {match.fixture.status.long}
                 </span>
             </div>
@@ -34,9 +36,15 @@ function MatchCard({ match }) {
 
                 {/* SCORE */}
                 <div className='score-board'>
-                    <span>
+                    {(match.fixture.status.long === "Not Started" || match.fixture.status.long === "Match Postponed"|| match.fixture.status.long === "Match Cancled") ? 
+                    <span>{new Date(match.fixture.date).                toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                    })}</span>  : <span>
                         {match.goals.home ?? "-"} - {match.goals.away ?? "-"}
                     </span>
+                }
+                   
                 </div>
 
                 {/* AWAY TEAM */}

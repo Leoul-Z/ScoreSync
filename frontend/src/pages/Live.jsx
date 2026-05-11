@@ -24,8 +24,13 @@ function Live() {
         loadFixtures()
     },[])
 
-    const live = matches.filter(
-                m=> m.fixture.status.short !== "NS" && m.fixture.status.short !== "FT"
+    const leagues =[39,135,78,94,61,288,88,140,2,253,307]
+
+    const filteredMatches= matches.filter(fm => leagues.includes(fm.league.id) )
+
+
+    const live = filteredMatches.filter(
+                m=> m.fixture.status.long!=="Match Finished" && m.fixture.status.long !== "Not Started" && m.fixture.status.long!=="Match Postponed" && m.fixture.status.long!=="Match Cancelled" 
             )
 
 

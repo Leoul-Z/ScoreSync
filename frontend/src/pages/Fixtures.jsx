@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import MatchCard from '../components/MatchCard'
 import '../css/Fixtures.css'
-import { getFixtures } from '../services/api.js';
+import { getFixtures, getFixturesDate } from '../services/api.js';
 
 
 function Fixtures(){
     const [matches, setMatches]= useState([]);
+    const [date, setDate]= useState("");
     const[error, setError]=useState(null)
     const[loading, setLoading]=useState(true)
 
@@ -17,7 +18,6 @@ function Fixtures(){
             try{
                     const fixtures= await getFixtures()
                     setMatches(fixtures)
-                    console.log(fixtures)
                    
             }catch(error){
                 setError("Failed to load");
@@ -27,18 +27,52 @@ function Fixtures(){
                 setLoading(false)
             }
         }
+
+
         loadFixtures()
         
     },[])
 
+    const handleSearch = async (e) => {
+        e.preventDefault()
+
+        setLoading(true)   
+            try {
+                const wantedDate = await getFixturesDate(date);
+                setMatches(wantedDate)
+
+            } catch (error) {
+                console.log(error)
+                setError("Failed to get date")
+            }finally{
+                setLoading(false)
+            }
+            console.log("DATE SENT:", date);
+        
+    }
+    const leagues =[39,135,78,94,61,288,88,140,2,253,307]
+
+    const filteredMatches= matches.filter(fm => leagues.includes(fm.league.id) )
+
 
         return <div>
             <div className='match-fixture'>
-                {error && <div>{error}</div> }
+             
 
+                    <form  onSubmit={handleSearch} className='Date'>
+                        <label htmlFor="date">Date</label>
+                        <input 
+                        type='date' 
+                        id='date' 
+                        value={date} 
+                        onChange={(e)=> setDate(e.target.value)}
+                        />
+                        <button className='date-button' type="submit">Date</button>
+                   </form>
+                {error && <div className='error'>{error}</div> }
                 {loading ? <div className='loading'>Loading...</div>:
                 <div className='match-grid'>
-                    {matches.map(m => <MatchCard match={m} key={m.id} />)}
+                    {filteredMatches.map(m => <MatchCard match={m} key={m.id} />)}
                     </div>
                 
                 }

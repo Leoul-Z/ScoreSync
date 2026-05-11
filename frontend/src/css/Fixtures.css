@@ -4,3 +4,10 @@
     gap:30px;
     align-items: center;
 }
+.date{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+}
