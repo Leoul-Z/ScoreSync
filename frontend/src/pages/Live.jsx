@@ -11,10 +11,11 @@ function Live() {
     useEffect (()=>{
         const loadFixtures= async () => { 
             try{
+                    setError(null)
                     const fixtures= await getFixtures()
                     setMatches(fixtures)
             }catch(error){
-                setError("Failed to load");
+                setError(error.message || "Failed to load fixtures");
                 console.log(error)
             }
             finally{
@@ -37,11 +38,17 @@ function Live() {
     return <div className='match-live'>
     {error && <div className="error">{error}</div> }
         {
-            loading? <div>Loading...</div>:
-            <div>
-            {live.map(m => <MatchCard match={m} key={m.id}/>
-            )}
-        </div>  
+            loading ? <div className='loading'>Loading live games...</div> :
+            live.length > 0 ? (
+                <div>
+                    {live.map(m => <MatchCard match={m} key={m.id}/>)}
+                </div>
+            ) : (
+                <div className="no-matches-notice">
+                    <span className="accent-text">No Live Matches</span>
+                    <p>There are no matches currently in progress. Click on "View Fixtures" to check the schedule for upcoming games!</p>
+                </div>
+            )
         }
     </div>
 }

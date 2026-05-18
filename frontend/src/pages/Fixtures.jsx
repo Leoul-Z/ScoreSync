@@ -16,11 +16,12 @@ function Fixtures(){
 
         const loadFixtures= async () => { 
             try{
+                    setError(null)
                     const fixtures= await getFixtures()
                     setMatches(fixtures)
                    
             }catch(error){
-                setError("Failed to load");
+                setError(error.message || "Failed to load fixtures");
                 console.log(error)
             }
             finally{
@@ -35,7 +36,7 @@ function Fixtures(){
 
     const handleSearch = async (e) => {
         e.preventDefault()
-
+        setError(null)
         setLoading(true)   
             try {
                 const wantedDate = await getFixturesDate(date);
@@ -43,11 +44,10 @@ function Fixtures(){
 
             } catch (error) {
                 console.log(error)
-                setError("Failed to get date")
+                setError(error.message || "Failed to get fixtures for the selected date");
             }finally{
                 setLoading(false)
             }
-            console.log("DATE SENT:", date);
         
     }
     const leagues =[39,135,78,94,61,288,88,140,2,253,307]

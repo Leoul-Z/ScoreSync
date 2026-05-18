@@ -1,79 +1,138 @@
 .navbar {
-    font-family: Oswald;
-    background-color: #000000;
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
-    padding: 1rem;
+  font-family: var(--font-display);
+  background-color: rgba(10, 10, 15, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--card-border);
+  padding: 0.8rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.navbar-brand a {
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  background: linear-gradient(135deg, #FFFFFF 30%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand a:hover {
+  transform: scale(1.02);
 }
 
 .navbar-links {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-}
-.navbar-links a{
-  font-size: 1.2rem;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  color: #a4a2a2;
-  transition: background-color 0.2s;
-}
-.navbar-login{
-    display: flex;
-    align-items: center;
-    gap:1rem;
-    font-size: 0.9rem;
-    border-radius: 4px;
-    font-size: 1.2rem;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    
-}
-.navbar-login a{
-  color: #a4a2a2;
-  transition: background-color 0.2s;
-}
-.navbar-login a:hover{
-  background-color: rgba(60, 11, 11, 0.1);
-  color: #1c29a1;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
 }
 
-.navbar-brand a{
-  color: #ffffff;
-  font-size: 2.5rem;
-  font-weight: bold;
-  background: linear-gradient(45deg, rgb(241, 23, 23), white);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-
-.nav-link a{
-  font-size: 1.4rem;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  color: #a4a2a2;
-  transition: background-color 0.2s;
+.navbar-links a {
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  position: relative;
+  padding: 0.4rem 0;
+  text-transform: uppercase;
 }
 
 .navbar-links a:hover {
-  color: #a11c1c;
+  color: var(--text-primary);
 }
 
+.navbar-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary) 0%, #818CF8 100%);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 8px var(--primary-glow);
+}
 
-@media (max-width: 780px){
-.navbar{
-    padding: 30px;
-    gap: 0.5rem;
-    font-size: 0.5rem;
+.navbar-links a:hover::after {
+  width: 100%;
+}
+
+.navbar-login {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navbar-login a {
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Styled login and register links separately */
+.navbar-login a[href="/login"] {
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+}
+
+.navbar-login a[href="/login"]:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-login a[href="/register"] {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--primary) 0%, #8B5CF6 100%);
+  box-shadow: 0 4px 15px var(--primary-glow);
+  border: 1px solid transparent;
+}
+
+.navbar-login a[href="/register"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 1.2rem 1.5rem;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 1.2rem;
   }
 
-}
+  .navbar-links {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .navbar-links a {
+    font-size: 0.95rem;
+  }
+
+  .navbar-login {
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navbar-login a {
+    font-size: 0.95rem;
+    padding: 0.4rem 1rem;
+  }
+}

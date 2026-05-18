@@ -10,22 +10,32 @@ export const getFixtures = async () => {
         "x-apisports-key": API_KEY      }
     });
 
-    
     const data = await fixture.json();
+
+    if (data.errors && Object.keys(data.errors).length > 0 && (!Array.isArray(data.errors) || data.errors.length > 0)) {
+      const errorMsg = Array.isArray(data.errors)
+        ? data.errors.join(", ")
+        : Object.values(data.errors).join(", ");
+      throw new Error(errorMsg);
+    }
   
     return data.response || [];
 };
 
 export const getFixturesDate = async (date) => {
-   //const formattedDate = date.toISOString().split("T")[0]; 
-  
-    const fixture = await fetch(`${BASE_URL}?season2026&date=${date}`, {
+    const fixture = await fetch(`${BASE_URL}?date=${date}`, {
       headers: {
         "x-apisports-key": API_KEY      }
     });
 
-    
     const data = await fixture.json();
+
+    if (data.errors && Object.keys(data.errors).length > 0 && (!Array.isArray(data.errors) || data.errors.length > 0)) {
+      const errorMsg = Array.isArray(data.errors)
+        ? data.errors.join(", ")
+        : Object.values(data.errors).join(", ");
+      throw new Error(errorMsg);
+    }
   
     return data.response || [];
 };
