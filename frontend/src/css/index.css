@@ -1,28 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap');
+
 :root {
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  /* Premium Design Tokens */
-  --bg-main: #0A0A0E;
-  --bg-gradient: radial-gradient(circle at 50% 0%, #171730 0%, #0A0A0E 75%);
-  --card-bg: rgba(18, 18, 29, 0.7);
-  --card-bg-hover: rgba(26, 26, 44, 0.85);
-  --card-border: rgba(255, 255, 255, 0.06);
-  --card-border-hover: rgba(99, 102, 241, 0.3);
+  /* Premium Design Tokens - Inspired by Reference Images */
+  --bg-main: #110522;
+  --bg-gradient: radial-gradient(circle at 50% 0%, #32155A 0%, #1A0A2E 50%, #110522 100%);
+  --card-bg: rgba(50, 21, 90, 0.25);
+  --card-bg-hover: rgba(134, 54, 153, 0.2);
+  --card-border: rgba(247, 248, 250, 0.08);
+  --card-border-hover: rgba(237, 29, 128, 0.4);
   
-  --primary: #6366F1; /* Electric Violet */
-  --primary-hover: #4F46E5;
-  --primary-glow: rgba(99, 102, 241, 0.3);
+  --primary: #ED1D80; /* Vibrant Magenta-Pink (#ED1D80) */
+  --primary-hover: #FF3E9E;
+  --primary-glow: rgba(237, 29, 128, 0.35);
+
+  --secondary: #863699; /* Medium Royal Purple (#863699) */
+  --secondary-hover: #A14DB4;
+  --secondary-glow: rgba(134, 54, 153, 0.3);
   
-  --accent: #10B981; /* Neon Emerald for Live/Success */
-  --accent-glow: rgba(16, 185, 129, 0.25);
+  --accent: #ED1D80; /* Match primary for highlights */
+  --accent-glow: rgba(237, 29, 128, 0.25);
   
-  --text-primary: #FFFFFF;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
+  --text-primary: #F7F8FA; /* Very Light Ice Grey (#F7F8FA) */
+  --text-secondary: #C1B4DF; /* Elegant Lavender-Grey */
+  --text-muted: #7D6B9C; /* Muted Space Purple */
   
-  --font-display: 'Oswald', sans-serif;
+  --font-display: 'Outfit', 'Oswald', sans-serif;
   
   color-scheme: dark;
   color: var(--text-primary);
@@ -54,6 +60,7 @@ body {
   min-height: 100vh;
   position: relative;
   font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
 }
 
 #root {
@@ -92,15 +99,15 @@ a {
 /* Global Animations & Utilities */
 @keyframes pulse-glow {
   0% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    box-shadow: 0 0 0 0 rgba(237, 29, 128, 0.5);
     transform: scale(1);
   }
   70% {
-    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    box-shadow: 0 0 0 10px rgba(237, 29, 128, 0);
     transform: scale(1.05);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    box-shadow: 0 0 0 0 rgba(237, 29, 128, 0);
     transform: scale(1);
   }
 }
@@ -109,8 +116,25 @@ a {
   display: inline-block;
   width: 8px;
   height: 8px;
-  background-color: var(--accent);
+  background-color: var(--primary);
   border-radius: 50%;
   margin-right: 8px;
   animation: pulse-glow 2s infinite;
+}
+
+/* Premium Glassmorphic utilities */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: var(--card-bg-hover);
+  border-color: var(--card-border-hover);
+  box-shadow: 0 12px 40px 0 rgba(237, 29, 128, 0.15);
 }

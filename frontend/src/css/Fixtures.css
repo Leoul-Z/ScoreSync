@@ -1,46 +1,56 @@
 .match-fixture {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
   align-items: center;
-  padding: 3rem 1.5rem;
+  padding: 4rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Styled date form support both .date and .Date due to JSX mismatch */
+/* Styled date form */
 .date, .Date {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   align-items: center;
   justify-content: center;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  backdrop-filter: blur(10px);
-  padding: 0.8rem 1.5rem;
-  border-radius: 30px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  margin-bottom: 1.5rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 1rem 2.5rem;
+  border-radius: 40px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  margin-bottom: 2rem;
   flex-wrap: wrap;
+  transition: all 0.35s ease;
+}
+
+.date:hover, .Date:hover {
+  border-color: rgba(237, 29, 128, 0.25);
+  box-shadow: 0 15px 40px rgba(237, 29, 128, 0.08);
 }
 
 .date label, .Date label {
   font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: 1.15rem;
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 1.5px;
   color: var(--text-secondary);
 }
 
 .date input[type="date"], .Date input[type="date"] {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-primary);
+  background: rgba(17, 5, 34, 0.6);
+  border: 1px solid rgba(247, 248, 250, 0.1);
+  color: #FFFFFF;
   font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
   outline: none;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -48,30 +58,30 @@
 
 .date input[type="date"]:focus, .Date input[type="date"]:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 8px var(--primary-glow);
-  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 12px var(--primary-glow);
+  background: rgba(17, 5, 34, 0.85);
 }
 
 .date-button {
-  background: linear-gradient(135deg, var(--primary) 0%, #8B5CF6 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: #FFFFFF;
   font-family: var(--font-display);
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 0.5rem 1.5rem;
+  letter-spacing: 1px;
+  padding: 0.65rem 2rem;
   border-radius: 30px;
   border: 1px solid transparent;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 12px var(--primary-glow);
+  box-shadow: 0 4px 15px var(--primary-glow);
 }
 
 .date-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.45);
-  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--primary-glow);
+  background: linear-gradient(135deg, var(--primary-hover) 0%, var(--secondary-hover) 100%);
 }
 
 .match-grid {
@@ -82,12 +92,39 @@
   gap: 1.5rem;
 }
 
+/* Loading style */
+.loading {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 3rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.error {
+  background: rgba(237, 29, 128, 0.1);
+  border: 1px solid rgba(237, 29, 128, 0.3);
+  color: #FFFFFF;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @media (max-width: 600px) {
   .date, .Date {
-    gap: 0.75rem;
-    padding: 0.8rem 1rem;
+    gap: 1rem;
+    padding: 1.2rem 1.5rem;
     width: 100%;
-    border-radius: 16px;
+    border-radius: 20px;
   }
 
   .date input[type="date"], .Date input[type="date"] {
@@ -96,5 +133,6 @@
 
   .date-button {
     width: 100%;
+    padding: 0.8rem;
   }
 }

@@ -1,54 +1,59 @@
 .navbar {
   font-family: var(--font-display);
-  background-color: rgba(10, 10, 15, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background-color: rgba(26, 10, 50, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--card-border);
-  padding: 0.8rem 3rem;
+  padding: 1rem 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease;
 }
 
 .navbar-brand a {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  background: linear-gradient(135deg, #FFFFFF 30%, var(--primary) 100%);
+  letter-spacing: 1px;
+  color: #FFFFFF;
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-brand a .brand-accent {
+  background: linear-gradient(135deg, var(--primary) 30%, #FF65B6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: inline-block;
-  transition: transform 0.3s ease;
 }
 
 .navbar-brand a:hover {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 3rem;
 }
 
 .navbar-links a {
-  font-size: 1.05rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 1px;
   color: var(--text-secondary);
   position: relative;
-  padding: 0.4rem 0;
+  padding: 0.5rem 0;
   text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
 .navbar-links a:hover {
-  color: var(--text-primary);
+  color: #FFFFFF;
 }
 
 .navbar-links a::after {
@@ -58,8 +63,8 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--primary) 0%, #818CF8 100%);
-  transition: width 0.3s ease;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 0 8px var(--primary-glow);
 }
 
@@ -74,11 +79,11 @@
 }
 
 .navbar-login a {
-  font-size: 1.05rem;
+  font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 0.5rem 1.2rem;
+  letter-spacing: 1px;
+  padding: 0.6rem 1.5rem;
   border-radius: 30px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -86,43 +91,44 @@
 /* Styled login and register links separately */
 .navbar-login a[href="/login"] {
   color: var(--text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: transparent;
+  border: 1px solid rgba(247, 248, 250, 0.15);
+  background: rgba(247, 248, 250, 0.02);
 }
 
 .navbar-login a[href="/login"]:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(247, 248, 250, 0.08);
+  border-color: rgba(247, 248, 250, 0.4);
+  transform: translateY(-1px);
 }
 
 .navbar-login a[href="/register"] {
-  color: #ffffff;
-  background: linear-gradient(135deg, var(--primary) 0%, #8B5CF6 100%);
+  color: #FFFFFF;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   box-shadow: 0 4px 15px var(--primary-glow);
   border: 1px solid transparent;
 }
 
 .navbar-login a[href="/register"]:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
-  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+  box-shadow: 0 6px 20px var(--primary-glow);
+  background: linear-gradient(135deg, var(--primary-hover) 0%, var(--secondary-hover) 100%);
 }
 
 @media (max-width: 900px) {
   .navbar {
-    padding: 1.2rem 1.5rem;
+    padding: 1.2rem 2rem;
     flex-direction: column;
     gap: 1.2rem;
   }
 
   .navbar-links {
-    gap: 1.5rem;
+    gap: 1.8rem;
     flex-wrap: wrap;
     justify-content: center;
   }
 
   .navbar-links a {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .navbar-login {
@@ -132,7 +138,7 @@
   }
 
   .navbar-login a {
-    font-size: 0.95rem;
-    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+    padding: 0.5rem 1.2rem;
   }
 }

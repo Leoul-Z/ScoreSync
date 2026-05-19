@@ -1,12 +1,14 @@
 .footer {
   margin-top: auto; /* Sticky footer: pushes footer to the bottom */
-  background-color: rgba(6, 6, 10, 0.85);
+  background-color: rgba(17, 5, 34, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid var(--card-border);
   color: var(--text-muted);
-  font-family: var(--font-display);
+  font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
-  padding: 1.5rem 1rem;
+  padding: 2.5rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,12 +19,13 @@
 .footer p {
   margin: 0;
   max-width: 800px;
-  line-height: 1.4;
+  line-height: 1.6;
+  color: var(--text-muted);
 }
 
 @media (max-width: 600px) {
   .footer {
     font-size: 0.8rem;
-    padding: 1.2rem 0.8rem;
+    padding: 1.8rem 1rem;
   }
 }
