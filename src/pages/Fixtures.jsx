@@ -50,7 +50,7 @@ function Fixtures(){
             }
         
     }
-    const leagues =[39,135,78,94,61,288,88,140,2,253,307]
+    const leagues =[1,39,135,78,94,61,288,88,140,2,253,307]
 
     const filteredMatches= matches.filter(fm => leagues.includes(fm.league.id) )
 
