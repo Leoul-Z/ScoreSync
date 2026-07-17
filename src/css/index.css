@@ -5,7 +5,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /* Premium Design Tokens - Inspired by Reference Images */
+ 
   --bg-main: #110522;
   --bg-gradient: radial-gradient(circle at 50% 0%, #32155A 0%, #1A0A2E 50%, #110522 100%);
   --card-bg: rgba(50, 21, 90, 0.25);

@@ -309,7 +309,7 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive Support */
+
 @media (max-width: 1024px) {
   .home-hero-section {
     padding: 4rem 3rem;
