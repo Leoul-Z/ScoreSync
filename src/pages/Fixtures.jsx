@@ -6,7 +6,6 @@ import { getFixtures, getFixturesDate } from '../services/api.js';
 
 function Fixtures(){
     const [matches, setMatches]= useState([]);
-    const [date, setDate]= useState("");
     const[error, setError]=useState(null)
     const[loading, setLoading]=useState(true)
 
@@ -35,10 +34,24 @@ function Fixtures(){
     },[])
 
     const handleSearch = async (e) => {
-        e.preventDefault()
         setError(null)
-        setLoading(true)   
+        setLoading(true)
             try {
+                const date= new Date()
+                const id = e.target.id
+                switch (id){
+                    case "today":
+                        date.setDate(date.getDate() + 0);
+                        break;
+                    case "yesterday":
+                        date.setDate(date.getDate()-1);
+                        break;
+                    case "tommorow":
+                        date.setDate(date.getDate()+1);
+                        break;
+                }
+                 
+            
                 const wantedDate = await getFixturesDate(date);
                 setMatches(wantedDate)
 
@@ -57,18 +70,12 @@ function Fixtures(){
 
         return <div>
             <div className='match-fixture'>
-             
-
-                    <form  onSubmit={handleSearch} className='Date'>
-                        <label htmlFor="date">Date</label>
-                        <input 
-                        type='date' 
-                        id='date' 
-                        value={date} 
-                        onChange={(e)=> setDate(e.target.value)}
-                        />
-                        <button className='date-button' type="submit">Date</button>
-                   </form>
+            
+                    <div className='Date'>
+                        <button onClick={handleSearch} id="yesterday" className='date-button' type="submit">Yesterday</button>
+                        <button onClick={handleSearch} id='today' className='date-button' type="submit">Today</button>
+                        <button onClick={handleSearch} id="tommorow" className='date-button' type="submit">Tommorow</button>
+                   </div>
                 {error && <div className='error'>{error}</div> }
                 {loading ? <div className='loading'>Loading...</div>:
                 <div className='match-grid'>

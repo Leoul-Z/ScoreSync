@@ -23,7 +23,8 @@ export const getFixtures = async () => {
 };
 
 export const getFixturesDate = async (date) => {
-    const fixture = await fetch(`${BASE_URL}?date=${date}`, {
+   const formattedDate = date.toISOString().split("T")[0]; // YYYY-MM-DD
+    const fixture = await fetch(`${BASE_URL}?date=${formattedDate}`, {
       headers: {
         "x-apisports-key": API_KEY      }
     });
