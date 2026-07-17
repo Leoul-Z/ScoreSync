@@ -7,7 +7,7 @@ function MatchCard({ match }) {
     return (
         <div className='matchcard'>
 
-            {/* TOP INFO */}
+           
             <div className='matchcard-top'>
                 <span className='league-info'>
                     {match.league.name}
@@ -18,10 +18,10 @@ function MatchCard({ match }) {
                 </span>
             </div>
 
-            {/* TEAMS */}
+           
             <div className='teams-info'>
 
-                {/* HOME TEAM */}
+               
                 <div className='team1-info'>
                     <img
                         src={match.teams.home.logo}
@@ -34,10 +34,10 @@ function MatchCard({ match }) {
                     </h3>
                 </div>
 
-                {/* SCORE */}
+                
                 <div className='score-board'>
                     {(match.fixture.status.long === "Not Started" || match.fixture.status.long === "Match Postponed"|| match.fixture.status.long === "Match Cancled") ? 
-                    <span>{new Date(match.fixture.date).                toLocaleTimeString([], {
+                    <span>{new Date(match.fixture.date).toLocaleTimeString([], {
                         hour: "2-digit",
                         minute: "2-digit",
                     })}</span>  : <span>
@@ -47,7 +47,7 @@ function MatchCard({ match }) {
                    
                 </div>
 
-                {/* AWAY TEAM */}
+               
                 <div className='team2-info'>
                     <img
                         src={match.teams.away.logo}
